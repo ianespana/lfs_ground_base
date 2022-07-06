@@ -19,6 +19,7 @@ Feel free to use this on your server!
 
 # Getting Started
 Using the ground base is quite easy. As long as you don't override any of it's components you just need to define your vehicle's seats and it's model.
+
 The vehicle's movement characteristics can be easily tuned by simply moving a couple of variables.
 
 More complex behaviour can be achieved by hooking or overriding certain functions, more info and examples can be found [on the wiki](https://github.com/ianespana/lfs_ground_base/wiki)
