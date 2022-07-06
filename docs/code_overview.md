@@ -20,3 +20,7 @@ It is important to note that you do **NOT** need to change all of these settings
 ## [init.lua](../init_lua)
 
 This file is where all the server-side code is processed. It is responsible for handling vehicle movement, weapons, animations, etc.
+
+## [cl_init.lua](../init_lua)
+
+This file is where all the client-side code is processed. It is responsible for handling HUD painting, VFX, lights, etc.
