@@ -17,10 +17,10 @@ This documentation will not go into all the options associated with creating SEN
 
 It is important to note that you do **NOT** need to change all of these settings! Most of them come preconfigured by default, and changing them is only necessary if you want to tweak their values.
 
-## [init.lua](../init_lua)
+## [init.lua](../overridable_server_functions)
 
 This file is where all the server-side code is processed. It is responsible for handling vehicle movement, weapons, animations, etc.
 
-## [cl_init.lua](../init_lua)
+## [cl_init.lua](../overridable_client_functions)
 
 This file is where all the client-side code is processed. It is responsible for handling HUD painting, VFX, lights, etc.
