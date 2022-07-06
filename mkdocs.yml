@@ -13,6 +13,7 @@ nav:
         - 'Overridable Functions': overridable_client_functions.md
     - 'Debugging': debugging.md
   - 'Breaking Changes': breaking_changes.md
+  - 'Examples': examples.md
 theme:
   name: material
   palette:
