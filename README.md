@@ -3,7 +3,7 @@ A Comprehensive vehicle base for building ground vehicles that utilize the power
 Please note this base does NOT contain any vehicles and is merely something that must be built upon!
 
 # Download
-You can always get the latest version of ShawzinBot [here](https://github.com/ianespana/lfs_ground_base/releases/latest).
+You can always get the latest version of the ground base [here](https://github.com/ianespana/lfs_ground_base/releases/latest).
 
 **It is absolutely necessary that you have LFS version v158.GIT(GitHub) or v168.WS(Workshop) or newer. This addon will not work properly if you are running an outdated version!**
 
@@ -22,10 +22,7 @@ Using the ground base is quite easy. As long as you don't override any of it's c
 
 The vehicle's movement characteristics can be easily tuned by simply moving a couple of variables.
 
-More complex behaviour can be achieved by hooking or overriding certain functions, more info and examples can be found [on the wiki](https://github.com/ianespana/lfs_ground_base/wiki)
+More complex behaviour can be achieved by hooking or overriding certain functions, more info and examples can be found [on the wiki](https://ianespana.github.io/lfs_ground_base/)
 
 # Special Thanks
 * [Luna](url=https://steamcommunity.com/profiles/76561197995010235) - For creating LFS and the AT-TE, which was used as inspiration to create this base.
-
-# Notes
-* Multiple keys at the same time don't really work correctly due to Shawzin limitations, you can offset notes by a tiny bit to fix this issue.
