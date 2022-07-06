@@ -306,7 +306,7 @@ function Quaternion:toAngle()
 	
 	return Angle(ang.p, ang.y, roll)
 end
-
+ 
 function Quaternion:__tostring()
 	return string.format("<%d,%d,%d,%d>",self[1],self[2],self[3],self[4])
 end

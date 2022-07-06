@@ -6,10 +6,13 @@ include( "lib_quaternions.lua" )
 
 function ENT:SpawnFunction( ply, tr, ClassName )
 	if not tr.Hit then return end
-
+	local spawnAngles = Angle(0, ply:EyeAngles().y, 0)
+	spawnAngles:RotateAroundAxis( Vector(0,0,1), 180 )
+	
 	local ent = ents.Create( ClassName )
 	ent.dOwnerEntLFS = ply
-	ent:SetPos( tr.HitPos + tr.HitNormal )
+	ent:SetPos( tr.HitPos + tr.HitNormal * 15 )
+	ent:SetAngles(spawnAngles)
 	ent:Spawn()
 	ent:Activate()
 	
@@ -33,6 +36,10 @@ function ENT:CreateAI()
 end
 
 function ENT:RemoveAI()
+end
+
+function ENT:RunAI()
+	return Angle(0,0,0)
 end
 
 function ENT:OnKeyThrottle( bPressed )
@@ -77,12 +84,6 @@ end
 function ENT:MainGunPoser( EyeAngles )
 end
 
-local CanMoveOn = {
-	["func_door"] = true,
-	["func_movelinear"] = true,
-	["prop_physics"] = true,
-}
-
 function ENT:VeryLowTick()
 	return FrameTime() > (1 / 30)
 end
@@ -107,12 +108,11 @@ function ENT:OnTick()
 	self:DoTrace()
 	
 	local Trace = self.GroundTrace
-	if self.WaterTrace.Fraction <= Trace.Fraction and !self.IgnoreWater and self:GetEngineActive() then
+	if self.WaterTrace.Hit and self.WaterTrace.Fraction <= Trace.Fraction and not self.IgnoreWater and self:GetEngineActive() then
 		Trace = self.WaterTrace
 	end
 	
-	local IsOnGround = Trace.Hit and math.deg( math.acos( math.Clamp( Trace.HitNormal:Dot( Vector(0,0,1) ) ,-1,1) ) ) < 70
-	PObj:EnableGravity( not IsOnGround )
+	local IsOnGround = Trace.Hit and math.deg( math.acos( math.Clamp( Trace.HitNormal:Dot( Vector(0,0,1) ), -1, 1) ) ) < self.MaxAngle
 	
 	local EyeAngles = Angle(0,0,0)
 	local KeyForward = false
@@ -149,7 +149,7 @@ function ENT:OnTick()
 		local pos = Vector( self:GetPos().x, self:GetPos().y, Trace.HitPos.z + self.HeightOffset)
 		local speedVector = Vector(0,0,0)
 		
-		if IsValid( Driver ) && !Driver:lfsGetInput( "FREELOOK" ) && self:GetEngineActive() then
+		if IsValid( Driver ) and not Driver:lfsGetInput( "FREELOOK" ) and self:GetEngineActive() then
 			local lookAt = Vector(0,-1,0)
 			lookAt:Rotate(Angle(0,Pod:WorldToLocalAngles( EyeAngles ).y,0))
 			self.StoredForwardVector = lookAt
@@ -159,19 +159,27 @@ function ENT:OnTick()
 			self.StoredForwardVector = lookAt
 		end
 		
-		local ang = self:LookRotation( self.StoredForwardVector, Trace.HitNormal ) - Angle(0,0,90)
+		local fwd = self.StoredForwardVector - (self.StoredForwardVector:Dot(Trace.HitNormal)) * Trace.HitNormal
+		local ang = self:LookRotation( fwd, Trace.HitNormal ) - Angle(0,0,90)
+		
 		if self:GetEngineActive() then
 			speedVector = Forward * ((KeyForward and MoveSpeed or 0) - (KeyBack and MoveSpeed or 0)) + Right * ((KeyLeft and MoveSpeed or 0) - (KeyRight and MoveSpeed or 0))
 		end
 		
-		self.deltaV = LerpVector( self.LerpMultiplier * FT, self.deltaV, speedVector )
-		self:SetDeltaV( self.deltaV )
-		pos = pos + self.deltaV
-		self:SetIsMoving(pos != self:GetPos())
+		local speedVectorXY = Vector(speedVector.x, speedVector.y, 0)
+		local speedVectorZ = Vector(0, 0, speedVector.z)
+		self.deltaV = LerpVector( math.Clamp(self.LerpMultiplier * FT, 0, 1), self.deltaV, speedVectorXY )
+		self.deltaVZ = LerpVector( math.Clamp(self.ZLerpMultiplier * FT, 0, 1), self.deltaVZ, speedVectorZ )
+		self:SetDeltaV( self.deltaV + self.deltaVZ )
+		pos = pos + self.deltaV + self.deltaVZ
+		self:SetIsMoving(pos ~= self:GetPos())
 		
 		self.ShadowParams.pos = pos
 		self.ShadowParams.angle = ang
 		PObj:ComputeShadowControl( self.ShadowParams )
+	else
+		self.deltaV = Vector(self:GetVelocity().x * self.InertiaMultiplier, self:GetVelocity().y * self.InertiaMultiplier, 0)
+		self.deltaVZ = Vector(0, 0, self:GetVelocity().z * 0.01)
 	end
 	
 	local GunnerPod = self:GetGunnerSeat()
@@ -191,6 +199,11 @@ function ENT:OnTick()
 	end
 	self:Gunner( self:GetGunner(), GunnerPod )
 	self:Turret( self:GetTurretDriver(), TurretPod )
+
+	self:OnTickExtra()
+end
+
+function ENT:OnTickExtra()
 end
 
 function ENT:Gunner( Driver, Pod )

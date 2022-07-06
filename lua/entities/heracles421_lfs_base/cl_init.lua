@@ -22,32 +22,81 @@ end
 
 function ENT:Draw()
 	self:DrawModel()
+	devMode = GetConVar("developer")
 
-	if self.DebugMode then
-		local Mins, Maxs = self:GetRotatedAABB( self:OBBMins(), self:OBBMaxs() )
-		Mins = Vector(Mins.x * self.HitBoxMultiplier, Mins.y * self.HitBoxMultiplier, 0)
-		Maxs = Vector(Maxs.x * self.HitBoxMultiplier, Maxs.y * self.HitBoxMultiplier, 0)
-		local startpos = self:GetMassCenter()
+	if devMode:GetBool() then
+		local localOrigin = self:OBBCenter()
+		local worldOrigin = self:LocalToWorld(self:OBBCenter())
+		local Mins, Maxs = self:OBBMins(), self:OBBMaxs()
+		local velocity = self:GetVelocity()
+		
+		Mins = Vector(Mins.x * self.HitBoxMultiplier * (velocity:Length2DSqr() * self.LookAheadMultiplier + 1), Mins.y * self.HitBoxMultiplier * (velocity:Length2DSqr() * self.LookAheadMultiplier + 1), 0)
+		Maxs = Vector(Maxs.x * self.HitBoxMultiplier * (velocity:Length2DSqr() * self.LookAheadMultiplier + 1), Maxs.y * self.HitBoxMultiplier * (velocity:Length2DSqr() * self.LookAheadMultiplier + 1), 0)
 		local dir = self:GetUp()
 
 		self:DoTrace()
 
 		local Trace = self.GroundTrace
-		if self.WaterTrace.Fraction <= Trace.Fraction and !self.IgnoreWater then
+		if self.WaterTrace.Hit and self.WaterTrace.Fraction <= Trace.Fraction and not self.IgnoreWater then
 			Trace = self.WaterTrace
 		end
 
-		render.DrawWireframeBox( startpos, Angle( 0, 0, 0 ), Mins, Maxs, Color( 255, 255, 255 ), true )
-		render.DrawLine( Trace.HitPos, startpos + dir * 200, Color( 0, 255, 0 ), true )
+		render.DrawWireframeBox( worldOrigin, self:GetAngles(), Mins, Maxs, Color( 255, 255, 255 ), true )
 
-		local clr = color_white
-		local IsOnGround = Trace.Hit and math.deg( math.acos( math.Clamp( Trace.HitNormal:Dot( Vector(0,0,1) ) ,-1,1) ) ) < 70
+		local IsOnGround = Trace.Hit and math.deg( math.acos( math.Clamp( Trace.HitNormal:Dot( Vector(0,0,1) ), -1, 1) ) ) < self.MaxAngle
 		if IsOnGround then
-			clr = Color( 255, 0, 0 )
+			local Pod = self:GetDriverSeat()
+			local Driver = Pod:GetDriver()
+			local EyeAngles = Angle(0,0,0)
+			
+			if IsValid( Driver ) then
+				EyeAngles = Driver:EyeAngles()
+			end
+			
+			if IsValid( Driver ) and not Driver:lfsGetInput( "FREELOOK" ) and self:GetEngineActive() then
+				local lookAt = Vector(0,-1,0)
+				lookAt:Rotate(Angle(0,Pod:WorldToLocalAngles( EyeAngles ).y,0))
+				self.StoredForwardVector = lookAt
+			else
+				local lookAt = Vector(0,-1,0)
+				lookAt:Rotate(Angle(0,self:GetAngles().y,0))
+				self.StoredForwardVector = lookAt
+			end
+			
+			local fwd = self.StoredForwardVector - (self.StoredForwardVector:Dot(Trace.HitNormal)) * Trace.HitNormal
+			local ang = self:LookRotation( fwd, Trace.HitNormal ) - Angle(0,0,90)
+
+			render.DrawLine( Trace.HitPos, Trace.HitNormal * 200 + Trace.HitPos, Color( 0, 0, 255 ), true )
+			render.DrawLine( Trace.HitPos, ang:Forward() * 200 + Trace.HitPos, Color( 255, 0, 0 ), true )
+			render.DrawLine( Trace.HitPos, ang:Right() * 200 + Trace.HitPos, Color( 0, 255, 0 ), true )
 		end
 
-		render.DrawWireframeBox( Trace.HitPos, Angle( 0, 0, 0 ), Mins, Maxs, clr, true )
+		local xSize = (Maxs.x - Mins.x) / (self.TraceSubdivision + 1)
+		local ySize = (Maxs.y - Mins.y) / (self.TraceSubdivision + 1)
+
+		local xSizeMax = xSize/2
+		local ySizeMax = ySize/2
+
+		for i, v in pairs(Trace.TraceTable) do
+			for j, v2 in pairs(v) do
+				local cornerPos = localOrigin + Vector(Mins.x + (i * xSize), Mins.y + (j * ySize), 0)
+				local centerOffset = Vector(xSizeMax, ySizeMax, 0)
+				local clr = Color( 0, 255, 150 )
+
+				if v2.Hit then
+					clr = Color( 255, 255, 0 )
+				end
+
+				render.DrawWireframeSphere( v2.StartPos, 1, 6, 6, clr, false )
+				render.DrawWireframeBox( v2.HitPos, self:GetAngles(), -centerOffset, centerOffset, clr, true )
+				render.DrawLine( v2.HitPos, v2.StartPos, clr, true )
+			end
+		end
 	end
+	self:DrawExtra()
+end
+
+function ENT:DrawExtra()
 end
 
 function ENT:LFSCalcViewFirstPerson( view, ply )
