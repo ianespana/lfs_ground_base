@@ -22,7 +22,7 @@ Using the ground base is quite easy. As long as you don't override any of it's c
 
 The vehicle's movement characteristics can be easily tuned by simply moving a couple of variables.
 
-More complex behaviour can be achieved by hooking or overriding certain functions, more info and examples can be found [on the wiki](https://github.com/ianespana/lfs_ground_base/wiki)
+More complex behaviour can be achieved by hooking or overriding certain functions, more info and examples can be found [on the wiki](https://ianespana.github.io/lfs_ground_base/)
 
 # Special Thanks
 * [Luna](url=https://steamcommunity.com/profiles/76561197995010235) - For creating LFS and the AT-TE, which was used as inspiration to create this base.
