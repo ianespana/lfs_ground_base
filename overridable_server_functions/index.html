@@ -1,0 +1,1223 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>Overridable Functions - Heracles' LFS Ground Base Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#overridable-functions" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Heracles&#39; LFS Ground Base Documentation" class="md-header__button md-logo" aria-label="Heracles' LFS Ground Base Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Heracles' LFS Ground Base Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Overridable Functions
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ianespana/lfs_ground_base" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ianespana/lfs_ground_base
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Heracles&#39; LFS Ground Base Documentation" class="md-nav__button md-logo" aria-label="Heracles' LFS Ground Base Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Heracles' LFS Ground Base Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ianespana/lfs_ground_base" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ianespana/lfs_ground_base
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        LFS Ground Base Documentation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../features/" class="md-nav__link">
+        Features
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        Frequently Asked Questions
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Developer Documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Developer Documentation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Developer Documentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code_overview/" class="md-nav__link">
+        Code Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../shared_lua/" class="md-nav__link">
+        Shared Lua
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" type="checkbox" id="__nav_5_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_3">
+          Serverside Lua
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Serverside Lua" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          Serverside Lua
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Overridable Functions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Overridable Functions
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#entrunonspawn" class="md-nav__link">
+    ENT:RunOnSpawn()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entonkeythrottle-bpressed" class="md-nav__link">
+    ENT:OnKeyThrottle( bPressed )
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entonlandinggeartoggled-bon" class="md-nav__link">
+    ENT:OnLandingGearToggled( bOn )
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entprimaryattack" class="md-nav__link">
+    ENT:PrimaryAttack()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entsecondaryattack" class="md-nav__link">
+    ENT:SecondaryAttack()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entmaingunposer" class="md-nav__link">
+    ENT:MainGunPoser()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entontickextra" class="md-nav__link">
+    ENT:OnTickExtra()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entturret-driver-pod" class="md-nav__link">
+    ENT:Turret( Driver, Pod )
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entgunner-driver-pod" class="md-nav__link">
+    ENT:Gunner( Driver, Pod )
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entonenginestarted" class="md-nav__link">
+    ENT:OnEngineStarted()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entonenginestopped" class="md-nav__link">
+    ENT:OnEngineStopped()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entoniscarried-name-old-new" class="md-nav__link">
+    ENT:OnIsCarried( name, old, new )
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" type="checkbox" id="__nav_5_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_4">
+          Clientside Lua
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Clientside Lua" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_4">
+          <span class="md-nav__icon md-icon"></span>
+          Clientside Lua
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overridable_client_functions/" class="md-nav__link">
+        Overridable Functions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../debugging/" class="md-nav__link">
+        Debugging
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../breaking_changes/" class="md-nav__link">
+        Breaking Changes
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/" class="md-nav__link">
+        Examples
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#entrunonspawn" class="md-nav__link">
+    ENT:RunOnSpawn()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entonkeythrottle-bpressed" class="md-nav__link">
+    ENT:OnKeyThrottle( bPressed )
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entonlandinggeartoggled-bon" class="md-nav__link">
+    ENT:OnLandingGearToggled( bOn )
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entprimaryattack" class="md-nav__link">
+    ENT:PrimaryAttack()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entsecondaryattack" class="md-nav__link">
+    ENT:SecondaryAttack()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entmaingunposer" class="md-nav__link">
+    ENT:MainGunPoser()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entontickextra" class="md-nav__link">
+    ENT:OnTickExtra()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entturret-driver-pod" class="md-nav__link">
+    ENT:Turret( Driver, Pod )
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entgunner-driver-pod" class="md-nav__link">
+    ENT:Gunner( Driver, Pod )
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entonenginestarted" class="md-nav__link">
+    ENT:OnEngineStarted()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entonenginestopped" class="md-nav__link">
+    ENT:OnEngineStopped()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entoniscarried-name-old-new" class="md-nav__link">
+    ENT:OnIsCarried( name, old, new )
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/ianespana/lfs_ground_base/edit/master/docs/overridable_server_functions.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<h1 id="overridable-functions">Overridable Functions</h1>
+<p>These functions can be overridden to perform various tasks. While all functions in the ground base can be overridden, it is important to note that <strong>ONLY</strong> the functions listed here are safe to override.</p>
+<p>Overriding other functions might lead to broken behaviour when a new update is released.</p>
+<p>Alongside the function documentation you can find usage examples.</p>
+<h2 id="entrunonspawn">ENT:RunOnSpawn()</h2>
+<details>
+<summary>Click to expand!</summary>
+
+This function gets executed when we spawn the vehicle. In here you should handle the spawning of any extra seats, assign turret operators and gunners, as well as anything else that needs to happen on spawn.
+
+
+<pre><code class="language-lua">function ENT:RunOnSpawn()
+    local TurretSeat = self:AddPassengerSeat( Vector(0,0,0), Angle(0,-90,0) ) -- Create a new seat
+    self:SetTurretSeat( TurretSeat ) -- Set the seat as the turret operator's seat
+
+    local ID = self:LookupAttachment( &quot;driver_turret&quot; )
+    local Attachment = self:GetAttachment( ID )
+
+    if Attachment then
+        local Pos,Ang = LocalToWorld( Vector(0,-60,0), Angle(180,0,-90), Attachment.Pos, Attachment.Ang )
+
+        TurretSeat:SetParent( NULL )
+        TurretSeat:SetPos( Pos )
+        TurretSeat:SetAngles( Ang )
+        TurretSeat:SetParent( self, ID ) -- Parent the seat to the &quot;driver_turret&quot; attachment. This is especially useful when the turret operator needs to rotate with the turret
+    end
+
+    self:AddPassengerSeat( Vector(-68,-23,18), Angle(0,-90,15) ) -- Add a normal passenger's seat. We could also parent this seat to a bone or an attachment
+end
+</code></pre>
+
+</details>
+
+<h2 id="entonkeythrottle-bpressed">ENT:OnKeyThrottle( bPressed )</h2>
+<details>
+<summary>Click to expand!</summary>
+
+This function gets executed when we press the throttle key (default FORWARD).
+
+
+<pre><code class="language-lua">function ENT:OnKeyThrottle( bPressed )
+end
+</code></pre>
+
+</details>
+
+<h2 id="entonlandinggeartoggled-bon">ENT:OnLandingGearToggled( bOn )</h2>
+<details>
+<summary>Click to expand!</summary>
+
+This function gets executed when we press the landing gear key (default SPACE).
+
+It is particularly useful if you want the vehicle to deploy and stow certain parts of itself, like missile launchers, or if you want to toggle lights.
+
+
+<pre><code class="language-lua">function ENT:OnLandingGearToggled( bOn )
+    if bOn then
+        self:PlayAnimation( &quot;rocket_hatch_open&quot; )
+    else
+        self:PlayAnimation( &quot;rocket_hatch_close&quot; )
+    end
+end
+</code></pre>
+
+</details>
+
+<h2 id="entprimaryattack">ENT:PrimaryAttack()</h2>
+<details>
+<summary>Click to expand!</summary>
+
+This function gets executed when we press the primary fire key (default LMB) **as the driver of the vehicle**.
+
+This is where you should handle your weapon firing logic, such as creating bullets, doing ray casts, etc.
+
+
+<pre><code class="language-lua">function ENT:PrimaryAttack()
+    Pod = self:GetDriverSeat()
+    if not IsValid( Pod ) then return end
+
+    Driver = Pod:GetDriver()
+    if not IsValid( Driver ) or Driver:lfsGetInput( &quot;FREELOOK&quot; ) then return end
+
+    if self:GetIsCarried() then return end
+    if not self:CanPrimaryAttack() or not self.MainGunDir then return end
+
+    local ID_L = self:LookupAttachment( &quot;muzzle_left&quot; )
+    local ID_R = self:LookupAttachment( &quot;muzzle_right&quot; )
+    local MuzzleL = self:GetAttachment( ID_L )
+    local MuzzleR = self:GetAttachment( ID_R )
+
+    if not MuzzleL or not MuzzleR then return end
+
+    local FirePos = {
+        [1] = MuzzleL,
+        [2] = MuzzleR,
+    }
+
+    self.FireIndexMainWeapon = self.FireIndexMainWeapon and self.FireIndexMainWeapon + 1 or 1
+
+    if self.FireIndexMainWeapon &gt; #FirePos then -- This bit of code iterates through all the launchers and fires one at a time.
+        self.FireIndexMainWeapon = 1
+        self:SetNextPrimary( 0.3 ) -- Take 0.3 seconds between shots.
+    else
+        if self.FireIndexMainWeapon == #FirePos then
+            self:SetNextPrimary( 0.3 ) -- We don't simulate any reloads or cool-downs, just keep firing at the same interval after we cycle through all guns
+        else
+            self:SetNextPrimary( 0.3 )
+        end
+    end
+
+    self:EmitSound( &quot;FIRE&quot; )
+
+    local Pos = FirePos[self.FireIndexMainWeapon].Pos
+    local Dir =  FirePos[self.FireIndexMainWeapon].Ang:Up()
+
+    if math.deg( math.acos( math.Clamp( Dir:Dot( self.MainGunDir ) ,-1,1) ) ) &lt; 8 then
+        Dir = self.MainGunDir
+    end
+
+    local bullet = {}
+    bullet.Num          = 1
+    bullet.Src          = Pos
+    bullet.Dir          = Dir
+    bullet.Spread       = Vector( 0.01,  0.01, 0 )
+    bullet.Tracer       = 1
+    bullet.TracerName   = &quot;lfs_laser_red&quot;
+    bullet.Force        = 100
+    bullet.HullSize     = 2
+    bullet.Damage       = 25
+    bullet.Attacker     = self:GetDriver()
+    bullet.AmmoType     = &quot;Pistol&quot;
+    bullet.Callback     = function(att, tr, dmginfo)
+        if tr.Entity.IsSimfphyscar then
+            dmginfo:SetDamageType(DMG_DIRECT)
+        else
+            dmginfo:SetDamageType(DMG_AIRBOAT)
+        end
+    end
+    self:FireBullets( bullet )
+
+    self:TakePrimaryAmmo()
+
+    if self:GetAmmoPrimary() &lt;= 0 then
+        self:EmitSound(&quot;CANNON_DEACTIVATE&quot;)
+    end
+end
+</code></pre>
+
+</details>
+
+<h2 id="entsecondaryattack">ENT:SecondaryAttack()</h2>
+<details>
+<summary>Click to expand!</summary>
+
+This function gets executed when we press the secondary fire key (default RMB) **as the driver of the vehicle**.
+
+This is where you should handle your secondary weapon firing logic, such as spawning rockets, creating beam lasers, etc.
+
+
+<pre><code class="language-lua">function ENT:SecondaryAttack()
+    if self:GetIsCarried() then return end
+    if not self:CanAltSecondaryAttack() or not self.MainGunDir then return end
+
+    local ID1 = self:LookupAttachment( &quot;left_launch_tube_1&quot; )
+    local ID2 = self:LookupAttachment( &quot;right_launch_tube_1&quot; )
+    local ID3 = self:LookupAttachment( &quot;left_launch_tube_2&quot; )
+    local ID4 = self:LookupAttachment( &quot;right_launch_tube_2&quot; )
+    local ID5 = self:LookupAttachment( &quot;left_launch_tube_3&quot; )
+    local ID6 = self:LookupAttachment( &quot;right_launch_tube_3&quot; )
+    local ID7 = self:LookupAttachment( &quot;left_launch_tube_4&quot; )
+    local ID8 = self:LookupAttachment( &quot;right_launch_tube_4&quot; )
+    local ID9 = self:LookupAttachment( &quot;left_launch_tube_5&quot; )
+    local ID10 = self:LookupAttachment( &quot;right_launch_tube_5&quot; )
+
+    local Muzzle1 = self:GetAttachment( ID1 )
+    local Muzzle2 = self:GetAttachment( ID2 )
+    local Muzzle3 = self:GetAttachment( ID3 )
+    local Muzzle4 = self:GetAttachment( ID4 )
+    local Muzzle5 = self:GetAttachment( ID5 )
+    local Muzzle6 = self:GetAttachment( ID6 )
+    local Muzzle7 = self:GetAttachment( ID7 )
+    local Muzzle8 = self:GetAttachment( ID8 )
+    local Muzzle9 = self:GetAttachment( ID9 )
+    local Muzzle10 = self:GetAttachment( ID10 )
+
+    if not Muzzle1 or not Muzzle2 or not Muzzle3 or not Muzzle4 or not Muzzle5 or not Muzzle6 or not Muzzle7 or not Muzzle8 or not Muzzle9 or not Muzzle10 then return end
+
+    local FirePos = {
+        [1] = Muzzle1,
+        [2] = Muzzle2,
+        [3] = Muzzle3,
+        [4] = Muzzle4,
+        [5] = Muzzle5,
+        [6] = Muzzle6,
+        [7] = Muzzle7,
+        [8] = Muzzle8,
+        [9] = Muzzle9,
+        [10] = Muzzle10,
+    }
+
+    self.FireIndexMissiles = self.FireIndexMissiles and self.FireIndexMissiles + 1 or 1
+
+    if self.FireIndexMissiles &gt; #FirePos then -- This bit of code iterates through all the launchers and fires one at a time.
+        self.FireIndexMissiles = 1
+        self:SetNextAltSecondary( 1 ) -- Take a second between shots.
+    else
+        if self.FireIndexMissiles == #FirePos then
+            self:SetNextAltSecondary( 6 ) -- Once we have cycled through all launchers take 6 seconds before we can fire again. Simulates a &quot;reload&quot; or &quot;cool-down&quot; of sorts
+        else
+            self:SetNextAltSecondary( 1 )
+        end
+    end
+
+    self:EmitSound( &quot;ROCKET&quot; )
+
+    local Pos = FirePos[self.FireIndexMissiles].Pos
+    local Dir =  FirePos[self.FireIndexMissiles].Ang:Up()
+
+    if math.deg( math.acos( math.Clamp( Dir:Dot( self.MainGunDir ) ,-1,1) ) ) &lt; 8 then
+        Dir = self.MainGunDir
+    end
+
+    local ent = ents.Create( &quot;lunasflightschool_tx130_missile&quot; )
+    ent:SetPos( Pos )
+    ent:SetAngles( Dir:Angle() )
+    ent:Spawn()
+    ent:Activate()
+    ent:SetAttacker( self:GetTurretDriver() )
+    ent:SetInflictor( self )
+
+    constraint.NoCollide( ent, self, 0, 0 )
+
+    self:TakeSecondaryAmmo()
+end
+</code></pre>
+
+</details>
+
+<h2 id="entmaingunposer">ENT:MainGunPoser()</h2>
+<details>
+<summary>Click to expand!</summary>
+
+This function gets executed every tick.
+
+We should use it to position the guns relative to where we are looking at. The following example demonstrates how we can make guns converge on our aiming reticule.
+Please note that this is **NOT** where we need to pose turrets or guns controlled by a seat other than the driver's (unless we want to slave those things to the driver's seat).
+
+
+<pre><code class="language-lua">function ENT:MainGunPoser( EyeAngles )
+    self.MainGunDir = EyeAngles:Forward()
+
+    local startpos = self:GetRotorPos()
+    local TracePlane = util.TraceHull( {
+        start = startpos,
+        endpos = (startpos + self.MainGunDir * 50000),
+        mins = Vector( -10, -10, -10 ),
+        maxs = Vector( 10, 10, 10 ),
+        filter = {self}
+    } )
+
+    local AimAnglesG = self:WorldToLocalAngles( (TracePlane.HitPos - self:LocalToWorld( Vector(-5,51,43) ) ):GetNormalized():Angle() )
+    local AimAnglesL = self:WorldToLocalAngles( (TracePlane.HitPos - self:LocalToWorld( Vector(5,51,43) ) ):GetNormalized():Angle() )
+    local AimAnglesR = self:WorldToLocalAngles( (TracePlane.HitPos - self:LocalToWorld( Vector(5,-51,43) ) ):GetNormalized():Angle() )
+
+    self:SetPoseParameter(&quot;sidegun_pitch&quot;, AimAnglesG.p )
+    self:SetPoseParameter(&quot;sidegun_left_yaw&quot;, AimAnglesL.y )
+    self:SetPoseParameter(&quot;sidegun_right_yaw&quot;, AimAnglesR.y )
+
+    local ID = self:LookupAttachment( &quot;muzzle_left&quot; )
+    local Muzzle = self:GetAttachment( ID )
+
+    if Muzzle then
+        self:SetFrontInRange( math.deg( math.acos( math.Clamp( Muzzle.Ang:Up():Dot( self.MainGunDir ) ,-1,1) ) ) &lt; 15 )
+    end
+end
+</code></pre>
+
+</details>
+
+<h2 id="entontickextra">ENT:OnTickExtra()</h2>
+<details>
+<summary>Click to expand!</summary>
+
+This function gets executed every tick.
+
+If we need to do anything on every tick not related to turrets or guns, this is the indicated place.
+
+
+<pre><code class="language-lua">function ENT:OnTickExtra()
+end
+</code></pre>
+
+</details>
+
+<h2 id="entturret-driver-pod">ENT:Turret( Driver, Pod )</h2>
+<details>
+<summary>Click to expand!</summary>
+
+This function gets executed every tick.
+
+We should use it to position the turret relative to where the operator is looking at. This is also the place where we need to handle the firing action of the turret. The following example demonstrates how we can make guns converge on our aiming reticule.
+
+
+<pre><code class="language-lua">function ENT:Turret( Driver, Pod )
+    if not IsValid( Pod ) or not IsValid( Driver ) then -- This is a good way of making a turret controllable by both the turret operator and the driver
+        Pod = self:GetDriverSeat() -- If there is no turret operator present, we switch control to the vehicle's driver
+        if not IsValid( Pod ) then return end
+
+        Driver = Pod:GetDriver()
+        if not IsValid( Driver ) or not Driver:lfsGetInput( &quot;FREELOOK&quot; ) then return end -- Only if the driver is in FREELOOK mode should he control the turret
+    end
+
+    local EyeAngles = Pod:WorldToLocalAngles( Driver:EyeAngles() )
+
+    local AimDir = EyeAngles:Forward()
+
+    local KeyAttack = Driver:KeyDown( IN_ATTACK )
+
+    local TurretPos = self:GetBonePosition( self:LookupBone( &quot;turret_yaw&quot; ) )
+
+    local startpos = Pod:GetPos() + EyeAngles:Up() * 100 -- We create a trace from the turret to the operator's aiming position
+    local TracePlane = util.TraceLine( {
+        start = startpos,
+        endpos = (startpos + AimDir * 50000),
+        filter = {self}
+    } )
+
+    local Ang = self:WorldToLocalAngles( (TracePlane.HitPos - TurretPos ):GetNormalized():Angle() )
+
+    local AimRate = 100 * FrameTime()
+
+    self.sm_ppmg_pitch = self.sm_ppmg_pitch and math.ApproachAngle( self.sm_ppmg_pitch, Ang.p, AimRate ) or 0
+    self.sm_ppmg_yaw = self.sm_ppmg_yaw and math.ApproachAngle( self.sm_ppmg_yaw, Ang.y, AimRate ) or 0
+
+    local TargetAng = Angle(self.sm_ppmg_pitch,self.sm_ppmg_yaw,0) -- We acquire the necessary turret angles to point towards the operator's cross-hair
+    TargetAng:Normalize()
+
+    self:SetPoseParameter(&quot;cannon_pitch&quot;, TargetAng.p ) -- Rotate the turret using pose parameters
+    self:SetPoseParameter(&quot;cannon_yaw&quot;, TargetAng.y )
+
+    if KeyAttack then
+        self:FireTurret( Driver ) -- If the turret's operator presses the primary fire key we run the firing logic
+    end
+
+    if (self.cFireIndex or 0) &gt; 0 and Driver:KeyDown( IN_RELOAD ) then  -- If we fire the whole clip, reload
+        self.cFireIndex = 0
+        self:SetNextSecondary( 2 )
+        Pod:EmitSound(&quot;CANNONRELOAD&quot;)
+    end
+end
+</code></pre>
+
+</details>
+
+<h2 id="entgunner-driver-pod">ENT:Gunner( Driver, Pod )</h2>
+<details>
+<summary>Click to expand!</summary>
+
+This function gets executed every tick.
+
+We should use it to position the gunner's weapons relative to where the operator is looking at. This is also the place where we need to handle the firing action of the gunner.
+It is basically the same as the turret code, but it should be used for any extra guns the vehicle might have (such as rear facing cannons, or a second, smaller calibre turret).
+
+
+<pre><code class="language-lua">function ENT:Gunner( Driver, Pod )
+end
+</code></pre>
+
+</details>
+
+<h2 id="entonenginestarted">ENT:OnEngineStarted()</h2>
+<details>
+<summary>Click to expand!</summary>
+
+This function gets executed when we start the vehicle's engine.
+
+We should use it to create engine sounds, as well as handle any changes to the hover height.
+We could also deploy weapons, turn on lights, etc. Your creativity is the limit.
+
+
+<pre><code class="language-lua">function ENT:OnEngineStarted()
+    self:EmitSound( &quot;lfs/naboo_n1_starfighter/start.wav&quot; )
+    self.HeightOffset = 20
+end
+</code></pre>
+
+</details>
+
+<h2 id="entonenginestopped">ENT:OnEngineStopped()</h2>
+<details>
+<summary>Click to expand!</summary>
+
+This function gets executed when we stop the vehicle's engine.
+
+We should use it to create engine sounds, as well as handle any changes to the hover height.
+We could also stow weapons, turn off lights, etc. Your creativity is the limit (again).
+
+
+<pre><code class="language-lua">function ENT:OnEngineStopped()
+    self:EmitSound( &quot;lfs/naboo_n1_starfighter/start.wav&quot; )
+    self.HeightOffset = 5
+end
+</code></pre>
+
+</details>
+
+<h2 id="entoniscarried-name-old-new">ENT:OnIsCarried( name, old, new )</h2>
+<details>
+<summary>Click to expand!</summary>
+
+This function gets executed when another vehicle picks us up.
+
+We should use this function to stow all weapons, reset all animations, etc.
+
+
+<pre><code class="language-lua">function ENT:OnIsCarried( name, old, new )
+    if new == old then return end
+
+    if new then
+        self:SetPoseParameter(&quot;sidegun_pitch&quot;, 0 )
+        self:SetPoseParameter(&quot;sidegun_left_yaw&quot;, 0 )
+        self:SetPoseParameter(&quot;sidegun_right_yaw&quot;, 0 )
+
+        self:SetPoseParameter(&quot;cannon_pitch&quot;, 0 )
+        self:SetPoseParameter(&quot;cannon_yaw&quot;, 0 )
+
+        self:SetPoseParameter(&quot;move_x&quot;, 0 )
+        self:SetPoseParameter(&quot;move_y&quot;, 0 )
+
+        self:SetWeaponOutOfRange( true )
+    end
+end
+</code></pre>
+
+</details>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../shared_lua/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Shared Lua" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Shared Lua
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../overridable_client_functions/" class="md-footer__link md-footer__link--next" aria-label="Next: Overridable Functions" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Overridable Functions
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "search.suggest", "search.highlight", "search.share"], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+    
+  </body>
+</html>
